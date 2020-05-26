@@ -21,4 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('todos','TaskController@fetchAll');
 Route::post('todos','TaskController@store');
 Route::delete('todos/{id}','TaskController@delete');
-Route::get('todos/{id}/complete', 'TaskController@completed');
+Route::put('todos/{id}/complete', 'TaskController@completed');

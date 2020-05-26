@@ -57672,7 +57672,9 @@ var actions = {
   },
   COMPLETE_TODO: function COMPLETE_TODO(_ref3, todo) {
     var commit = _ref3.commit;
-    axios.get("/api/todos/".concat(todo.id, "/complete")).then(function (res) {
+    axios.put("/api/todos/".concat(todo.id, "/complete"), {
+      'completed': todo.completed
+    }).then(function (res) {
       if (res.data === 'completed') console.log('completed');
     })["catch"](function (err) {
       console.log(err);

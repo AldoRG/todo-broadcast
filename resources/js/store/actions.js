@@ -17,7 +17,7 @@ let actions = {
         })
     },
     COMPLETE_TODO({commit}, todo) {
-        axios.get(`/api/todos/${todo.id}/complete`)
+        axios.put(`/api/todos/${todo.id}/complete`, {'completed': todo.completed})
             .then(res => {
                 if (res.data === 'completed')
                     console.log('completed')
