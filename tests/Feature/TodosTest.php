@@ -21,37 +21,37 @@ test('Test empty response todos api endpoint', function () {
     assertEquals("[]", $response->getContent());
 });
 
-test('Test create To-Do item', function () {
+test('Test create todo item', function () {
     $this->withoutEvents();
     $todo = [
-        'title' => 'New To-Do Item'
+        'title' => 'New todo Item'
     ];
     $response = $this->post('/api/todos', $todo);
     assertEquals("added", json_decode($response->getContent()));
 });
 
-test('Test see To-Do item', function () {
+test('Test see todo item', function () {
     $todo = factory(App\Task::class)->create();
     $response = $this->get('/api/todos');
     $responseItem = json_decode($response->getContent())[0];
     assertEquals($todo->title, $responseItem->title);
 });
 
-test('Test see all To-Do items', function () {
+test('Test see all todo items', function () {
     $items = 10;
     factory(App\Task::class, $items)->create();
     $response = $this->get('/api/todos');
     assertCount($items, json_decode($response->getContent()));
 });
 
-test('Test complete To-Do item', function () {
+test('Test complete todo item', function () {
     $this->withoutEvents();
     $todo = factory(App\Task::class)->create();
     $response = $this->put("/api/todos/{$todo->id}/complete", ['completed' => !$todo->completed]);
     assertEquals("completed", json_decode($response->getContent()));
 });
 
-test('Test delete To-Do item', function () {
+test('Test delete todo item', function () {
     $this->withoutEvents();
     $todo = factory(App\Task::class)->create();
     $response = $this->delete("/api/todos/{$todo->id}");
