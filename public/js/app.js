@@ -43742,6 +43742,7 @@ var render = function() {
       ],
       staticClass: "new-todo",
       attrs: {
+        dusk: "todo-input",
         type: "text",
         autofocus: "autofocus",
         placeholder: "What are you trying to get done?"
@@ -43804,7 +43805,7 @@ var render = function() {
             }
           ],
           staticClass: "toggle",
-          attrs: { type: "checkbox" },
+          attrs: { dusk: "check-todo" + _vm.todo.id, type: "checkbox" },
           domProps: {
             checked: Array.isArray(_vm.todo.completed)
               ? _vm._i(_vm.todo.completed, null) > -1
@@ -43842,6 +43843,7 @@ var render = function() {
         _vm._v(" "),
         _c("button", {
           staticClass: "destroy",
+          attrs: { dusk: "delete-todo" + _vm.todo.id },
           on: {
             click: function($event) {
               return _vm.removeTodo(_vm.todo)

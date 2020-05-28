@@ -1,9 +1,9 @@
 <template>
     <li class="todo" :class="{ completed: todo.completed }">
         <div class="view">
-            <input type="checkbox" @click="completeTodo(todo)" v-model="todo.completed" class="toggle">
+            <input :dusk="`check-todo${todo.id}`" type="checkbox" @click="completeTodo(todo)" v-model="todo.completed" class="toggle">
             <label>{{todo.title}}</label>
-            <button @click="removeTodo(todo)" class="destroy"></button>
+            <button :dusk="`delete-todo${todo.id}`" @click="removeTodo(todo)" class="destroy"></button>
         </div>
     </li>
 </template>

@@ -28,6 +28,7 @@ test('Test create todo item', function () {
     ];
     $response = $this->post('/api/todos', $todo);
     assertEquals("added", json_decode($response->getContent()));
+    $this->assertDatabaseHas('tasks', ['title' => $todo['title']]);
 });
 
 test('Test see todo item', function () {
@@ -47,8 +48,9 @@ test('Test see all todo items', function () {
 test('Test complete todo item', function () {
     $this->withoutEvents();
     $todo = factory(App\Task::class)->create();
-    $response = $this->put("/api/todos/{$todo->id}/complete", ['completed' => !$todo->completed]);
+    $response = $this->put("/api/todos/{$todo->id}/complete");
     assertEquals("completed", json_decode($response->getContent()));
+    $this->assertDatabaseHas('tasks', ['title' => $todo['title'], 'completed' => true]);
 });
 
 test('Test delete todo item', function () {
@@ -56,4 +58,5 @@ test('Test delete todo item', function () {
     $todo = factory(App\Task::class)->create();
     $response = $this->delete("/api/todos/{$todo->id}");
     assertEquals("deleted", json_decode($response->getContent()));
+    $this->assertDatabaseMissing('tasks', ['title' => $todo['title'], 'completed' => true]);
 });

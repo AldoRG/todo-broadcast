@@ -28,10 +28,10 @@ class TaskController extends Controller
         return response()->json("deleted");
     }
 
-    public function completed($id, Request $request)
+    public function completed($id)
     {
         $task = Task::find($id);
-        $task->completed = !$request->completed;
+        $task->completed = !$task->completed;;
         $task->save();
         broadcast(new TaskCompleted($task));
         return response()->json('completed');

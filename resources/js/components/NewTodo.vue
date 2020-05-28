@@ -1,7 +1,7 @@
 <template>
     <div>
         <span class="new-todo-error" v-if="error">Please add a task title</span>
-        <input type="text" v-model="newTodo.title"
+        <input dusk="todo-input" type="text" v-model="newTodo.title"
                @keyup.enter="addTodo" autofocus="autofocus"
                placeholder="What are you trying to get done?" class="new-todo">
     </div>

@@ -10,6 +10,7 @@ To-Do broadcast is a web application using [Laravel](https://laravel.com), [VueJ
 ```
 composer install
 php artisan key:generate
+php artisan migrate
 ```
 
 ## Testing
