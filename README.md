@@ -19,7 +19,7 @@ Run tests with:
 ```
 ./vendor/bin/pest
 ```
-![Image of To-Do Unit Test](https://aldorg.com/todounit.png)
+![Image of To-Do Unit Test](https://aldorg.com/todounit.png#1)
 
 ## License
 
